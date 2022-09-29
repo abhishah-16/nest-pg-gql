@@ -1,15 +1,23 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateEmployeeInput } from './dto/create-employee.input';
 import { UpdateEmployeeInput } from './dto/update-employee.input';
+import { Employee } from './entities/employee.entity';
 
 @Injectable()
 export class EmployeeService {
-  create(createEmployeeInput: CreateEmployeeInput) {
-    return 'This action adds a new employee';
+
+  constructor(@InjectRepository(Employee) private employeeRepo: Repository<Employee>) { }
+
+  async create(createEmployeeInput: CreateEmployeeInput) {
+    const employee = this.employeeRepo.create(createEmployeeInput)
+    await this.employeeRepo.save(employee)
+    return employee
   }
 
   findAll() {
-    return `This action returns all employee`;
+    return this.employeeRepo.find()
   }
 
   findOne(id: number) {

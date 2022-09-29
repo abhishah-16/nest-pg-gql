@@ -13,7 +13,7 @@ export class EmployeeResolver {
     return this.employeeService.create(createEmployeeInput);
   }
 
-  @Query(() => [Employee], { name: 'employee' })
+  @Query(() => [Employee], { name: 'getAllemployee' })
   findAll() {
     return this.employeeService.findAll();
   }
