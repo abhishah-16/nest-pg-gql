@@ -36,5 +36,5 @@ input UpdateEmployeeInput {
   designation: String
   city: String
   mobile: String
-  id: Int!
+  id: String!
 }
