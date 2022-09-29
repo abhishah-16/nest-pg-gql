@@ -1,10 +1,19 @@
 import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EmployeeModule } from './employee/employee.module';
+import { ApolloDriver } from '@nestjs/apollo';
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
 
 @Module({
-  imports: [EmployeeModule],
+  imports: [EmployeeModule,GraphQLModule.forRoot({
+    playground: false,
+    autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    driver: ApolloDriver,
+    plugins: [ApolloServerPluginLandingPageLocalDefault],
+  })],
   controllers: [AppController],
   providers: [AppService],
 })
