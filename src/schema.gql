@@ -13,7 +13,7 @@ type Employee {
 
 type Query {
   getAllemployee: [Employee!]!
-  employee(id: Int!): Employee!
+  employee(id: String!): Employee!
 }
 
 type Mutation {

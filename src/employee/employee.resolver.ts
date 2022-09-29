@@ -6,7 +6,7 @@ import { UpdateEmployeeInput } from './dto/update-employee.input';
 
 @Resolver(() => Employee)
 export class EmployeeResolver {
-  constructor(private readonly employeeService: EmployeeService) {}
+  constructor(private readonly employeeService: EmployeeService) { }
 
   @Mutation(() => Employee)
   createEmployee(@Args('createEmployeeInput') createEmployeeInput: CreateEmployeeInput) {
@@ -19,7 +19,7 @@ export class EmployeeResolver {
   }
 
   @Query(() => Employee, { name: 'employee' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(@Args('id', { type: () => String }) id: string) {
     return this.employeeService.findOne(id);
   }
 

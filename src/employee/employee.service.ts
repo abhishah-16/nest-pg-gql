@@ -20,8 +20,16 @@ export class EmployeeService {
     return this.employeeRepo.find()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} employee`;
+  async findOne(id: string) {
+    const employee = await this.employeeRepo.findOne({
+      where: {
+        id: id
+      }
+    })
+    if (!employee) {
+      throw new Error('Employee Does not Exists')
+    }
+    return employee
   }
 
   update(id: number, updateEmployeeInput: UpdateEmployeeInput) {
