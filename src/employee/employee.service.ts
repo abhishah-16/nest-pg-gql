@@ -20,12 +20,37 @@ export class EmployeeService {
     return this.employeeRepo.find()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} employee`;
+  async findOne(id: string) {
+    const employee = await this.employeeRepo.findOne({
+      where: {
+        id: id
+      }
+    })
+    if (!employee) {
+      throw new Error('Employee Does not Exists')
+    }
+    return employee
   }
 
-  update(id: number, updateEmployeeInput: UpdateEmployeeInput) {
-    return `This action updates a #${id} employee`;
+  async update(id: string, updateEmployeeInput: UpdateEmployeeInput) {
+    const employee = await this.employeeRepo.findOne({
+      where: {
+        id: id
+      }
+    })
+    if (!employee) {
+      throw new Error('Employee Does not Exists')
+    }
+    const newemployee = await this.employeeRepo.update({
+      id
+    }, {
+      name: updateEmployeeInput.name,
+      city: updateEmployeeInput.city,
+      designation: updateEmployeeInput.designation,
+      email: updateEmployeeInput.email,
+      mobile: updateEmployeeInput.mobile
+    })
+    return newemployee
   }
 
   remove(id: number) {
