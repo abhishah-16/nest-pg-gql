@@ -7,6 +7,7 @@ import { EmployeeModule } from './employee/employee.module';
 import { ApolloDriver } from '@nestjs/apollo';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Employee } from './employee/entities/employee.entity';
 
 @Module({
   imports: [
@@ -24,8 +25,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'postgres',
       password: 'root',
       database: 'nest_typeorm',
-      synchronize: true
-      
+      synchronize: true,
+      entities: [Employee]
     })],
   controllers: [AppController],
   providers: [AppService],

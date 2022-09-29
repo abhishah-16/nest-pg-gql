@@ -12,6 +12,7 @@ type Employee {
 }
 
 type Query {
+  getAllemployee: [Employee!]!
   employee(id: Int!): Employee!
 }
 
@@ -22,12 +23,18 @@ type Mutation {
 }
 
 input CreateEmployeeInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
+  email: String!
+  designation: String!
+  city: String
+  mobile: String
 }
 
 input UpdateEmployeeInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  name: String
+  email: String
+  designation: String
+  city: String
+  mobile: String
   id: Int!
 }
