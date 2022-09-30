@@ -9,12 +9,15 @@ type Employee {
   designation: String!
   city: String
   mobile: String
+  project: Project!
+  projectId: String!
 }
 
 type Project {
   id: String!
   name: String!
   description: String!
+  employees: Employee!
 }
 
 type Query {
@@ -37,6 +40,7 @@ input CreateEmployeeInput {
   designation: String!
   city: String
   mobile: String
+  projectId: String!
 }
 
 input CreateProjectInput {
