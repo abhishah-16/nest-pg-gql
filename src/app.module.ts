@@ -8,6 +8,8 @@ import { ApolloDriver } from '@nestjs/apollo';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Employee } from './employee/entities/employee.entity';
+import { ProjectModule } from './project/project.module';
+import { Project } from './project/entities/project.entity';
 
 @Module({
   imports: [
@@ -26,8 +28,9 @@ import { Employee } from './employee/entities/employee.entity';
       password: 'root',
       database: 'nest_typeorm',
       synchronize: true,
-      entities: [Employee]
-    })],
+      entities: [Employee, Project]
+    }),
+    ProjectModule],
   controllers: [AppController],
   providers: [AppService],
 })

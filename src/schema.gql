@@ -11,13 +11,24 @@ type Employee {
   mobile: String
 }
 
+type Project {
+  id: String!
+  name: String!
+  description: String!
+}
+
 type Query {
   getAllemployee: [Employee!]!
   employee(id: String!): Employee!
+  getAllProject: [Project!]!
+  project(id: Int!): Project!
 }
 
 type Mutation {
   createEmployee(createEmployeeInput: CreateEmployeeInput!): Employee!
+  createProject(createProjectInput: CreateProjectInput!): Project!
+  updateProject(updateProjectInput: UpdateProjectInput!): Project!
+  removeProject(id: Int!): Project!
 }
 
 input CreateEmployeeInput {
@@ -26,4 +37,15 @@ input CreateEmployeeInput {
   designation: String!
   city: String
   mobile: String
+}
+
+input CreateProjectInput {
+  name: String!
+  description: String!
+}
+
+input UpdateProjectInput {
+  name: String
+  description: String
+  id: Int!
 }
