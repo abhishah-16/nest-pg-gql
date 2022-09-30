@@ -23,10 +23,10 @@ export class ProjectResolver {
     return this.projectService.findOne(id);
   }
 
-  // @Mutation(() => Project)
-  // updateProject(@Args('updateProjectInput') updateProjectInput: UpdateProjectInput) {
-  //   return this.projectService.update(updateProjectInput.id, updateProjectInput);
-  // }
+  @Mutation(() => Project)
+  updateProject(@Args('updateProjectInput') updateProjectInput: UpdateProjectInput) {
+    return this.projectService.update(updateProjectInput.id, updateProjectInput);
+  }
 
   @Mutation(() => Project)
   removeProject(@Args('id', { type: () => String }) id: string) {

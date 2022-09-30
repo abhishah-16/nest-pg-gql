@@ -16,12 +16,21 @@ export class ProjectService {
     return project
   }
 
-  findAll() {
-    return this.projectRepo.find()
+  async findAll() {
+    const projects = await this.projectRepo.find()
+    return projects
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} project`;
+  async findOne(id: string) {
+    const project = await this.projectRepo.findOne({
+      where: {
+        id
+      }
+    })
+    if (!project) {
+      throw new Error('Project does not found')
+    }
+    return project
   }
 
   update(id: string, updateProjectInput: UpdateProjectInput) {
