@@ -18,18 +18,10 @@ export class EmployeeService {
   }
 
   async findAll() {
-    const employees = await this.employeeRepo.find()
-    const e = employees.map((employee) => {
-      return {
-        ...employee,
-        project: this.projectRepo.findOne({
-          where: {
-            id: employee.projectId
-          }
-        })
-      }
+    const employees = await this.employeeRepo.find({
+      relations: ["project"]
     })
-    return e
+    return employees
   }
 
   async findOne(id: string) {

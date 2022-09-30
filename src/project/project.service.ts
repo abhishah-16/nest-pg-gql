@@ -21,7 +21,9 @@ export class ProjectService {
   }
 
   async findAll() {
-    const projects = await this.projectRepo.find()
+    const projects = await this.projectRepo.find({
+      relations: ["employees"]
+    })
     return projects
   }
 
