@@ -21,14 +21,13 @@ type Query {
   getAllemployee: [Employee!]!
   employee(id: String!): Employee!
   getAllProject: [Project!]!
-  project(id: Int!): Project!
+  project(id: String!): Project!
 }
 
 type Mutation {
   createEmployee(createEmployeeInput: CreateEmployeeInput!): Employee!
   createProject(createProjectInput: CreateProjectInput!): Project!
-  updateProject(updateProjectInput: UpdateProjectInput!): Project!
-  removeProject(id: Int!): Project!
+  removeProject(id: String!): Project!
 }
 
 input CreateEmployeeInput {
@@ -42,10 +41,4 @@ input CreateEmployeeInput {
 input CreateProjectInput {
   name: String!
   description: String!
-}
-
-input UpdateProjectInput {
-  name: String
-  description: String
-  id: Int!
 }

@@ -10,23 +10,25 @@ export class ProjectService {
 
   constructor(@InjectRepository(Project) private projectRepo: Repository<Project>) { }
 
-  create(createProjectInput: CreateProjectInput) {
-    return 'This action adds a new project';
+  async create(createProjectInput: CreateProjectInput) {
+    const project = this.projectRepo.create(createProjectInput)
+    await this.projectRepo.save(project)
+    return project
   }
 
   findAll() {
     return this.projectRepo.find()
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return `This action returns a #${id} project`;
   }
 
-  update(id: number, updateProjectInput: UpdateProjectInput) {
+  update(id: string, updateProjectInput: UpdateProjectInput) {
     return `This action updates a #${id} project`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} project`;
   }
 }
