@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { EmployeeService } from 'src/employee/employee.service';
 import { Employee } from 'src/employee/entities/employee.entity';
 import { Repository } from 'typeorm';
 import { CreateProjectInput } from './dto/create-project.input';
@@ -10,7 +11,8 @@ import { Project } from './entities/project.entity';
 export class ProjectService {
 
   constructor(@InjectRepository(Project) private projectRepo: Repository<Project>,
-    @InjectRepository(Employee) private employeeRepo: Repository<Employee>) { }
+    @InjectRepository(Employee) private employeeRepo: Repository<Employee>,
+  ) { }
 
 
 
@@ -45,5 +47,14 @@ export class ProjectService {
 
   remove(id: string) {
     return `This action removes a #${id} project`;
+  }
+
+  async getEmployees(id: string) {
+    const employees = await this.employeeRepo.find({
+      where: {
+        projectId: id
+      }
+    })
+    return employees
   }
 }

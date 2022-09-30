@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Project } from 'src/project/entities/project.entity';
+import { ProjectService } from 'src/project/project.service';
 import { Repository } from 'typeorm';
 import { CreateEmployeeInput } from './dto/create-employee.input';
 import { Employee } from './entities/employee.entity';
@@ -9,7 +10,8 @@ import { Employee } from './entities/employee.entity';
 export class EmployeeService {
 
   constructor(@InjectRepository(Employee) private employeeRepo: Repository<Employee>,
-    @InjectRepository(Project) private projectRepo: Repository<Project>) { }
+    @InjectRepository(Project) private projectRepo: Repository<Project>,
+    private projectservice: ProjectService) { }
 
   async create(createEmployeeInput: CreateEmployeeInput) {
     const employee = this.employeeRepo.create(createEmployeeInput)
@@ -34,5 +36,10 @@ export class EmployeeService {
       throw new Error('Employee Does not Exists')
     }
     return employee
+  }
+
+  async getProject(id: string) {
+    const project = await this.projectservice.findOne(id)
+    return project
   }
 }
