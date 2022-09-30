@@ -8,6 +8,7 @@ import { Employee } from 'src/employee/entities/employee.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Project, Employee]), forwardRef(() => EmployeeModule)],
-  providers: [ProjectResolver, ProjectService]
+  providers: [ProjectResolver, ProjectService],
+  exports: [ProjectService]
 })
 export class ProjectModule { }

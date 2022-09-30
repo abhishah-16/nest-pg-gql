@@ -18,6 +18,6 @@ export class Project {
   description: string
 
   @OneToMany(() => Employee, employee => employee.project)
-  @Field(() => Employee)
+  @Field(() => [Employee])
   employees: Employee[]
 }
