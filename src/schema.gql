@@ -2,13 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Project {
-  id: String!
-  name: String!
-  description: String!
-  employees: Employee!
-}
-
 type Employee {
   id: String!
   name: String!
@@ -18,6 +11,13 @@ type Employee {
   mobile: String
   project: Project!
   projectId: String!
+}
+
+type Project {
+  id: String!
+  name: String!
+  description: String!
+  employees: Employee!
 }
 
 type Query {

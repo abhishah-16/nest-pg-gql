@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Employee } from 'src/employee/entities/employee.entity';
 import { Repository } from 'typeorm';
 import { CreateProjectInput } from './dto/create-project.input';
 import { UpdateProjectInput } from './dto/update-project.input';
@@ -8,7 +9,10 @@ import { Project } from './entities/project.entity';
 @Injectable()
 export class ProjectService {
 
-  constructor(@InjectRepository(Project) private projectRepo: Repository<Project>) { }
+  constructor(@InjectRepository(Project) private projectRepo: Repository<Project>,
+    @InjectRepository(Employee) private employeeRepo: Repository<Employee>) { }
+
+
 
   async create(createProjectInput: CreateProjectInput) {
     const project = this.projectRepo.create(createProjectInput)
