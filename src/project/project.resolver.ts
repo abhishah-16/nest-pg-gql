@@ -6,14 +6,14 @@ import { UpdateProjectInput } from './dto/update-project.input';
 
 @Resolver(() => Project)
 export class ProjectResolver {
-  constructor(private readonly projectService: ProjectService) {}
+  constructor(private readonly projectService: ProjectService) { }
 
   @Mutation(() => Project)
   createProject(@Args('createProjectInput') createProjectInput: CreateProjectInput) {
     return this.projectService.create(createProjectInput);
   }
 
-  @Query(() => [Project], { name: 'project' })
+  @Query(() => [Project], { name: 'getAllProject' })
   findAll() {
     return this.projectService.findAll();
   }

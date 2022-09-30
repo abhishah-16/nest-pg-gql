@@ -12,13 +12,15 @@ type Employee {
 }
 
 type Project {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  id: String!
+  name: String!
+  description: String!
 }
 
 type Query {
   getAllemployee: [Employee!]!
   employee(id: String!): Employee!
+  getAllProject: [Project!]!
   project(id: Int!): Project!
 }
 
@@ -38,12 +40,12 @@ input CreateEmployeeInput {
 }
 
 input CreateProjectInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
+  description: String!
 }
 
 input UpdateProjectInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  name: String
+  description: String
   id: Int!
 }
