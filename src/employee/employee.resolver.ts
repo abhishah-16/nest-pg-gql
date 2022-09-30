@@ -22,14 +22,4 @@ export class EmployeeResolver {
   findOne(@Args('id', { type: () => String }) id: string) {
     return this.employeeService.findOne(id);
   }
-
-  @Mutation(() => Employee)
-  updateEmployee(@Args('updateEmployeeInput') updateEmployeeInput: UpdateEmployeeInput) {
-    return this.employeeService.update(updateEmployeeInput.id, updateEmployeeInput);
-  }
-
-  @Mutation(() => Employee)
-  removeEmployee(@Args('id', { type: () => Int }) id: number) {
-    return this.employeeService.remove(id);
-  }
 }

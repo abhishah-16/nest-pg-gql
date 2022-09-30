@@ -18,8 +18,6 @@ type Query {
 
 type Mutation {
   createEmployee(createEmployeeInput: CreateEmployeeInput!): Employee!
-  updateEmployee(updateEmployeeInput: UpdateEmployeeInput!): Employee!
-  removeEmployee(id: Int!): Employee!
 }
 
 input CreateEmployeeInput {
@@ -28,13 +26,4 @@ input CreateEmployeeInput {
   designation: String!
   city: String
   mobile: String
-}
-
-input UpdateEmployeeInput {
-  name: String
-  email: String
-  designation: String
-  city: String
-  mobile: String
-  id: String!
 }
