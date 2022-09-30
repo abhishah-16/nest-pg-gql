@@ -50,6 +50,6 @@ input CreateProjectInput {
 
 input UpdateProjectInput {
   id: String!
-  name: String!
-  description: String!
+  name: String
+  description: String
 }

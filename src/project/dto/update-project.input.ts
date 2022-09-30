@@ -5,9 +5,9 @@ export class UpdateProjectInput {
   @Field()
   id: string
 
-  @Field()
+  @Field({ nullable: true })
   name: string
 
-  @Field()
+  @Field({ nullable: true })
   description: string
 }
