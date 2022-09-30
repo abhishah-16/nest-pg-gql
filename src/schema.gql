@@ -11,13 +11,22 @@ type Employee {
   mobile: String
 }
 
+type Project {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
 type Query {
   getAllemployee: [Employee!]!
   employee(id: String!): Employee!
+  project(id: Int!): Project!
 }
 
 type Mutation {
   createEmployee(createEmployeeInput: CreateEmployeeInput!): Employee!
+  createProject(createProjectInput: CreateProjectInput!): Project!
+  updateProject(updateProjectInput: UpdateProjectInput!): Project!
+  removeProject(id: Int!): Project!
 }
 
 input CreateEmployeeInput {
@@ -26,4 +35,15 @@ input CreateEmployeeInput {
   designation: String!
   city: String
   mobile: String
+}
+
+input CreateProjectInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateProjectInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
 }
