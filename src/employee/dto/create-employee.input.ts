@@ -17,4 +17,7 @@ export class CreateEmployeeInput {
 
   @Field({ nullable: true })
   mobile: string
+
+  @Field()
+  projectId: string
 }
